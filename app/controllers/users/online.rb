@@ -9,7 +9,7 @@ module Users
 		  Client.add(@client, client_object)
 
 		  puts "#{@params.inspect}"
-		  LOGGER.info "Client Connected: #{client_object.inspect}}"
+		  LOGGER.info "Client Connected: #{client_object.inspect}"
 
 		  @publisher.publish('/users/list', {
 		  	:channel => @channel,

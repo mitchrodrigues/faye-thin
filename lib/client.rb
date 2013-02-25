@@ -20,6 +20,8 @@ class Client
 	attr_accessor :data, :id
 	def initialize(client, data)
 		@data = data
+		@data[:client] = client
+
 		@id = client
 	end
 end
