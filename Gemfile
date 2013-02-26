@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 
 
 gem 'logger'
-gem "redis", "~> 3.0.2"
+# gem "redis", "~> 3.0.2"
 gem "resque", "~> 1.23.0"
 gem 'faye'
 gem 'thin'
