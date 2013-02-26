@@ -21,7 +21,11 @@ Faye::WebSocket.load_adapter('thin')
 $app = Faye::RackAdapter.new(:mount => '/faye', :timeout => 25)
 LOGGER = Logger.new('log/faye.log')
 
-autoload :Client, 'client'
+libs = Dir.glob("#{SERVER_ROOT}/lib/**/*.rb")
+libs.each do |l|
+  auto_load_lib = l.gsub!("#{SERVER_ROOT}/lib/", "").gsub(".rb", "")
+  autoload auto_load_lib.camelcase.to_sym, auto_load_lib
+end
 
 $app.bind(:publish)     {|cid, chnl, data| Server.handle_request(:publish, chnl, cid, data) }
 $app.bind(:subscribe)   {|cid, chnl|       Server.handle_request(:subscribe, chnl, cid) }
