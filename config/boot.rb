@@ -11,6 +11,8 @@ require "thin"
 require "honeybadger"
 require "active_support"
 require "neography"
+require 'pathname'
+
 
 initializers = Dir.glob("#{SERVER_ROOT}/config/initializers/*.rb")
 initializers.each do |initializer|
@@ -21,13 +23,15 @@ Faye::WebSocket.load_adapter('thin')
 $app = Faye::RackAdapter.new(:mount => '/faye', :timeout => 25)
 LOGGER = Logger.new('log/faye.log')
 
-libs = Dir.glob("#{SERVER_ROOT}/lib/**/*.rb")
-libs.each do |l|
-  auto_load_lib = l.gsub!("#{SERVER_ROOT}/lib/", "").gsub(".rb", "")
-  autoload auto_load_lib.camelcase.to_sym, auto_load_lib
+
+autoload_paths = ["app", "lib"]
+autoload_paths.each do |folder|
+  Dir.glob("#{SERVER_ROOT}/#{folder}/**/*.rb").each do |lib_file|
+    lib = File.basename(lib_file, ".rb")
+    autoload lib.camelcase.to_sym, lib
+  end
 end
 
 $app.bind(:publish)     {|cid, chnl, data| Server.handle_request(:publish, chnl, cid, data) }
 $app.bind(:subscribe)   {|cid, chnl|       Server.handle_request(:subscribe, chnl, cid) }
 $app.bind(:unsubscribe) {|cid, chnl|       Server.handle_request(:unsubscribe, chnl, cid) }
-

@@ -1,6 +1,11 @@
 class Client
 	class << self
 		@@list = {}
+
+		def count
+			@@list.size
+		end
+
 		def add(key, client)
 			@@list[key] = client
 			puts "New client connected"
