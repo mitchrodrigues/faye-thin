@@ -14,9 +14,9 @@ require "neography"
 require 'pathname'
 
 
-initializers = Dir.glob("#{SERVER_ROOT}/config/initializers/*.rb")
+initializers = Dir.glob("#{SERVER_ROOT}/config/initializers/**/*.rb")
 initializers.each do |initializer|
-   require "initializers/" + File.basename(initializer, File.extname(initializer))
+   require "initializers/#{File.basename(initializer, ".rb")}"
 end
 
 Faye::WebSocket.load_adapter('thin')
