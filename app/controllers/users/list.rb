@@ -22,7 +22,6 @@ module Users
 				:data    => Client.get_list,
 				:message => "Connect"
 			})
-			LOGGER.info "Publishing: #{Client.list}"
 			rescue => e
 				LOGGER.info e.message
 				LOGGER.info e.backtrace.join("\n")
