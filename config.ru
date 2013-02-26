@@ -13,9 +13,9 @@ $LOAD_PATH.unshift( File.join( Dir.pwd, 'app', 'controllers' ) )
 
 @app_dir = File.join( Dir.pwd, 'app')
 Dir.entries(@app_dir).each do |entry|
-  next unless entry['.']
+  next if entry['.']
   path = File.join(@app_dir, entry)
-  $LOAD_PATH.unshift(path) if File.directory?(entry)
+  $:.unshift(path) if File.directory?(path) && !$:.include?(path)
 end
 
 require 'boot'
