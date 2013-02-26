@@ -24,9 +24,7 @@ module Users
 				:client  => @client,
 				:message => 'Disconnect',
 				:count   => Client.count,
-				:data    => {
-					:client => @client
-				}
+				:data    => { :client => @client }
 		  })
 		end
 	end

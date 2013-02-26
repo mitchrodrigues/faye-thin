@@ -84,6 +84,5 @@ DEPENDENCIES
   honeybadger
   logger
   neography
-  redis (~> 3.0.2)
   resque (~> 1.23.0)
   thin
