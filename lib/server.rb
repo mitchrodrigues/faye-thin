@@ -16,8 +16,6 @@ class Server
       #   puts e.backtrace
       #   return
       # end
-
-
       LOGGER.info "Handling action #{action} for controller #{channel}"
       controller = channel_to_constant(channel) rescue nil
       if (controller)

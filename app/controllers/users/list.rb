@@ -20,7 +20,8 @@ module Users
 				:channel => @channel,
 				:client  => @client,
 				:data    => Client.get_list,
-				:message => "Connect"
+				:message => "Connect",
+				:count   => Client.count
 			})
 			rescue => e
 				LOGGER.info e.message
