@@ -9,15 +9,15 @@ class Server
 
     def handle_request(action, channel, client_id, params = {})
       $client ||= Faye::Client.new('http://localhost:9292/faye') # init this here if we dont have one
-      # begin
-      #   require channel[1..-1]
-      # rescue => e
-      #   puts e.message
-      #   puts e.backtrace
-      #   return
-      # end
+      begin
+        require channel[1..-1]
+      rescue => e
+        puts e.message
+        puts e.backtrace
+        return
+      end
       LOGGER.info "Handling action #{action} for controller #{channel}"
-      controller = channel_to_constant(channel) rescue nil
+      controller = channel_to_constant(channel)
       if (controller)
         LOGGER.info "Proccessing: #{controller}"
         LOGGER.info "Params: #{params.inspect}"
