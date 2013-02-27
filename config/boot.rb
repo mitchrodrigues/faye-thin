@@ -4,17 +4,13 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 require 'logger'
 
-require 'bjson'
 require "faye"
 require "redis"
 require "resque"
 require "thin"
 require "honeybadger"
 require "active_support"
-require "mongo"
-require "mongoid"
 require 'pathname'
-require 'active_model'
 
 initializers = Dir.glob("#{SERVER_ROOT}/config/initializers/**/*.rb")
 initializers.each do |initializer|
