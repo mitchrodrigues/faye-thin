@@ -16,11 +16,11 @@ module Users
 				:data    => [client_object.data]
 		  })
 
-			Page.create({
-				:page => page,
-				:user_name => client_object.data.username,
-				:user_id   => client_object.data.id
-			})
+			# Page.create({
+			#	:page_name => page,
+			#	:user_name => client_object.data.username,
+			#	:user_id   => client_object.data.id
+			# })
 		end
 
 		def unsubscribe

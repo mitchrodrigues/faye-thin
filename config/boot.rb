@@ -12,7 +12,7 @@ require "honeybadger"
 require "active_support"
 require "neography"
 require 'pathname'
-
+require 'active_model'
 
 initializers = Dir.glob("#{SERVER_ROOT}/config/initializers/**/*.rb")
 initializers.each do |initializer|

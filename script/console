@@ -43,7 +43,8 @@ $LOAD_PATH.unshift( File.join( Dir.pwd, 'config' ) )
 
 require 'boot'
 
-$stderr.puts "-------------------------------------"
-$stderr.puts "Entering Console"
-$stderr.puts "-------------------------------------"
+$stderr.puts " ,-------------------------------------"
+$stderr.puts "|        Entering Console              "
+$stderr.puts " `-------------------------------------"
+
 IRB.start_session(binding)
