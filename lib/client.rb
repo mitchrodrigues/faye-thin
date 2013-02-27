@@ -17,8 +17,6 @@ class Client
 
 		def get_list
 			results = @@list.collect(&:data)
-			puts "Results: " + results
-			results
 		end
 	end
 
