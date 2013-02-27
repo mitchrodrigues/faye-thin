@@ -1,14 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (3.2.11)
-      activesupport (= 3.2.11)
-      builder (~> 3.0.0)
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
-    builder (3.0.4)
     columnize (0.3.6)
     cookiejar (0.3.0)
     daemons (1.0.10)
@@ -93,7 +89,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel
   activesupport
   debugger
   faye
