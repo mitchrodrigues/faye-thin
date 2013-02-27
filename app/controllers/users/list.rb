@@ -21,7 +21,7 @@ module Users
 				:client  => @client,
 				:data    => Client.get_list,
 				:message => "Connect",
-				:count   => Client.count
+				:count   => Client.count,
 			})
 			rescue => e
 				LOGGER.info e.message

@@ -23,12 +23,13 @@ Faye::WebSocket.load_adapter('thin')
 $app = Faye::RackAdapter.new(:mount => '/faye', :timeout => 25)
 LOGGER = Logger.new('log/faye.log')
 
-
-autoload_paths = ["app", "lib"]
-autoload_paths.each do |folder|
-  Dir.glob("#{SERVER_ROOT}/#{folder}/**/*.rb").each do |lib_file|
-    lib = File.basename(lib_file, ".rb")
-    autoload lib.camelcase.to_sym, lib
+AUTO_LOAD_PATHS.each do |folder|
+  path = "#{SERVER_ROOT}/#{folder}/"
+  $:.unshift(path) unless $:.include?(path)
+  Dir.glob("#{path}**/*.rb").each do |lib_file|
+    lib = lib_file.gsub(path, "").gsub(".rb", "")
+    require lib
+    #autoload lib.camelcase.to_sym, lib
   end
 end
 

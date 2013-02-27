@@ -7,6 +7,7 @@ source 'https://rubygems.org'
 gem 'logger'
 # gem "redis", "~> 3.0.2"
 gem "resque", "~> 1.23.0"
+gem "debugger"
 gem 'faye'
 gem 'thin'
 gem 'honeybadger'
